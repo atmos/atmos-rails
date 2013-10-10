@@ -12,7 +12,7 @@
 
 ## Usage
 
-    $ rails new your_awesome_app -m https://github.com/atmos/webhook_endpoint_generator/generator.rb
+    $ rails new your_awesome_app -m https://raw.github.com/atmos/webhook_endpoint_generator/master/generator.rb
 
 If you're pushing to heroku you'll need to enable 3 environmental variables for resque-web support. It authenticates via GitHub OAuth.
 
