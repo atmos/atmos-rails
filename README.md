@@ -2,7 +2,7 @@
 
 I stole this from @therealadam. I have no idea what I'm doing.
 
-![](http://i.imgur.com/DKi95C8.gif)
+![](http://25.media.tumblr.com/ffc3802d129e5f580d207d9cf725fc52/tumblr_mrltxbddK51szim6vo1_1280.jpg)
 
 What you get:
 
