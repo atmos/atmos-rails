@@ -7,6 +7,8 @@
 # ------------
 
 gem_group :development, :test do
+  gem 'pry'
+  gem 'sqlite3'
   gem 'rspec-rails'
 end
 run "rm -rf test" # Is there a way to set the -T option on the new command?
@@ -15,13 +17,15 @@ run "rm -rf test" # Is there a way to set the -T option on the new command?
 # ------------
 
 gem_group :development do
-  gem 'pry'
   gem 'foreman'
   gem 'meta_request'
   gem 'better_errors'
   gem 'binding_of_caller'
 end
 
+gem_group :staging, :production do
+  gem 'pg'
+end
 # Application dependencies
 # ------------------------
 gem 'resque'
@@ -121,6 +125,11 @@ run %Q{echo "# A new GitHub app!" > README.md}
 
 run %Q{echo "web: bundle exec unicorn -p $PORT" >> Procfile}
 run %Q{echo "worker: QUEUE="*" bundle exec rake resque:work" >> Procfile}
+
+run %Q{sed -i .bak "/^gem 'sqlite3'$/d" Gemfile}
+run %Q{sed -i .bak "/^# Use sqlite3 as the database for Active Record$/d" Gemfile}
+
+run %Q{rm Gemfile.bak*}
 
 # Bootstrapping
 # -------------
