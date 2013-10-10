@@ -131,6 +131,11 @@ run %Q{sed -i .bak "/^# Use sqlite3 as the database for Active Record$/d" Gemfil
 
 run %Q{rm Gemfile.bak*}
 
+run %Q{cp config/environments/production.rb config/environments/staging.rb}
+
+environment 'config.force_ssl = true', env: 'staging'
+environment 'config.force_ssl = true', env: 'production'
+
 # Bootstrapping
 # -------------
 run "bundle install"
