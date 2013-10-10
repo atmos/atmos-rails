@@ -6,15 +6,25 @@
 
 * rspec
 * resque
-* github oauth
 * pry and friends
+* warden-github-rails
 * heroku support via procfile
 
 ## Usage
 
     $ rails new your_awesome_app -m https://raw.github.com/atmos/webhook_endpoint_generator/master/generator.rb
 
-If you're pushing to heroku you'll need to enable 3 environmental variables for resque-web support. It authenticates via GitHub OAuth.
+You'll need to add a redis addon, I've been using openredis.
+
+    ~/your_awesome_app(master*)$ heroku create your_awesome_app
+    Creating your_awesome_app... done, stack is cedar
+    http://your_awesome_app.herokuapp.com/ | git@heroku.com:your_awesome_app.git
+    Git remote heroku added
+    ~/your_awesome_app(master*)$ heroku addons:add openredis:micro
+    Adding openredis:micro on your_awesome_app... done, v3 ($10/mo)
+    Use `heroku addons:docs openredis` to view documentation.
+
+If you want resque-web you'll need to enable 3 environmental variables for GitHub OAuth support.
 
     $ heroku config:add GITHUB_CLIENT_ID=<id>
     $ heroku config:add GITHUB_CLIENT_SECRET=<secret>
