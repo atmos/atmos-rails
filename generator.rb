@@ -139,7 +139,7 @@ generate 'rspec:install'
 # setup DB
 git :init
 git add: "."
-git commit: %Q{ -m 'Generated with love from https://github.com/atmos/basic_rails_app' }
+git commit: %Q{ -m 'Big Bang :boom:' }
 
 run "bundle cache"
 git add: "vendor/cache"
