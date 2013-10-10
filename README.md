@@ -1,21 +1,16 @@
-# Adam Keys' lovely app generator
+# atmos lovely app generator
 
-> It's a town full of losers who generate Rails apps by hand
+I stole this from @therealadam. I have no idea what I'm doing.
 
-> And we're pullin' out of here to win
-
-...because I got tired of remembering the options to `rails new`.
+![](http://www.angelfoodcomic.com/wp-content/uploads/I-have-no-idea-what-I-am-doing.jpg)
 
 What you get:
 
 * rspec
 * pry and friends (via jazzhands), rack-mini-profiler, better_errors, foreman
-* Twitter Bootstrap, vendor'd
-* Pow setup
 * A lovely error message if something went sideways (note: will be obscured by
   `rails new` running `bundle` _after_ the template runs)
 
 ## Usage
 
-    $ rails new your_awesome_app -m
-    https://github.com/therealadam/born_to_rails/born_to_rails.rb
+    $ rails new your_awesome_app -m https://github.com/atmos/rails_sucks/generator.rb
