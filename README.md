@@ -2,7 +2,7 @@
 
 I stole this from @therealadam. I have no idea what I'm doing.
 
-![](http://www.angelfoodcomic.com/wp-content/uploads/I-have-no-idea-what-I-am-doing.jpg)
+![](http://i.imgur.com/DKi95C8.gif)
 
 What you get:
 
