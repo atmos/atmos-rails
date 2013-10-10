@@ -15,8 +15,6 @@ run "rm -rf test" # Is there a way to set the -T option on the new command?
 # ------------
 
 gem_group :development do
-  gem 'jazz_hands' # Move this to a local Gemfile thingy
-  gem 'rack-mini-profiler'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
@@ -25,6 +23,10 @@ end
 
 # Application dependencies
 # ------------------------
+gem 'resque'
+gem 'unicorn'
+gem 'yajl-ruby'
+gem 'warden-github-rails'
 
 # Front-end dependencies
 # ----------------------
