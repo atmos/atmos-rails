@@ -9,6 +9,8 @@
 gem_group :development, :test do
   gem 'pry'
   gem 'sqlite3'
+  gem "webmock"
+  gem "debugger"
   gem 'rspec-rails'
 end
 run "rm -rf test" # Is there a way to set the -T option on the new command?
