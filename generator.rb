@@ -44,12 +44,12 @@ gem 'warden-github-rails'
 
 rakefile "resque.rake" do
   %Q{
-    require 'resque/tasks'
+require 'resque/tasks'
 
-    namespace :resque do
-      task :setup => [:environment] do
-      end
-    end
+namespace :resque do
+  task :setup => [:environment] do
+  end
+end
   }
 end
 
@@ -114,7 +114,7 @@ github_authenticate(:team => :employees) do
   mount Resque::Server.new, :at => "/resque"
 end
 
-post "/callbacks" => "callbacks#create"
+post "/events" => "events#create"
 EOF
 
 # Vendor front-end bits
