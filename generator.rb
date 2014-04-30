@@ -110,13 +110,38 @@ end
 route <<-EOF
 get  "/" => redirect("https://github.com")
 
-github_authenticate(:team => :employees) do
-  mount Resque::Server.new, :at => "/resque"
-end
+  github_authenticate(:team => :employees) do
+    mount Resque::Server.new, :at => "/resque"
+  end
 
-post "/events" => "events#create"
+  post "/events" => "events#create"
 EOF
 
+add_file "config/unicorn.rb", <<-EOF
+# config/unicorn.rb
+worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
+timeout 15
+preload_app true
+
+before_fork do |server, worker|
+  Signal.trap 'TERM' do
+    puts 'Unicorn master intercepting TERM and sending myself QUIT instead'
+    Process.kill 'QUIT', Process.pid
+  end
+
+  defined?(ActiveRecord::Base) and
+    ActiveRecord::Base.connection.disconnect!
+end
+
+after_fork do |server, worker|
+  Signal.trap 'TERM' do
+    puts 'Unicorn worker intercepting TERM and doing nothing. Wait for master to send QUIT'
+  end
+
+  defined?(ActiveRecord::Base) and
+    ActiveRecord::Base.establish_connection
+end
+EOF
 # Vendor front-end bits
 # ---------------------
 
@@ -126,7 +151,7 @@ run "rm README.rdoc"
 run %Q{echo "" > README.md}
 run %Q{echo "# A new GitHub app!" > README.md}
 
-run %Q{echo "web: bundle exec unicorn -p $PORT" >> Procfile}
+run %Q{echo "web: bundle exec unicorn -p $PORT -c config/unicorn.rb" >> Procfile}
 run %Q{echo "worker: QUEUE="*" bundle exec rake resque:work" >> Procfile}
 
 run %Q{sed -i .bak "/^gem 'sqlite3'$/d" Gemfile}
