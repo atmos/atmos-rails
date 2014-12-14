@@ -83,8 +83,7 @@ module #{app_const_base}
 
   def self.redis
     @redis ||= if ENV["OPENREDIS_URL"]
-                 uri = URI.parse(ENV["OPENREDIS_URL"])
-                 Redis.new(:url => uri)
+                 Redis.new(:url => ENV["OPENREDIS_URL"])
                elsif ENV["BOXEN_REDIS_URL"]
                  uri = URI.parse(ENV["BOXEN_REDIS_URL"])
                  Redis.new(:host => uri.host, :port => uri.port)
