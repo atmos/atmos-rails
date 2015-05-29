@@ -12,7 +12,7 @@
 
 ## Usage
 
-    $ rails new your_awesome_app -m https://raw.github.com/atmos/webhook_endpoint_generator/master/generator.rb
+    $ rails new your_awesome_app -m https://raw.github.com/atmos/atmos-rails/master/generator.rb
 
 You'll need to add a redis addon, I've been using openredis.
 
